@@ -1,19 +1,33 @@
 package com.leoproject.StreetWearStoreBackEnd.resources;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leoproject.StreetWearStoreBackEnd.entities.Product;
+import com.leoproject.StreetWearStoreBackEnd.services.ProductService;
 
 @RestController
 @RequestMapping(value = "/products")
 public class ProductResource {
 	
+	@Autowired
+	private ProductService service;
+	
 	@GetMapping
-	public ResponseEntity<Product> findAll(){
-		Product p = new Product(null,"t", 10.0, "t", "t", "t", "t", "t", "t", 10);
+	public ResponseEntity<List<Product>> findAll(){
+		List <Product> list = service.findAll();
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<Product> findById(@PathVariable Integer id){
+		Product p = service.findById(id);
 		return ResponseEntity.ok().body(p);
 	}
 }
