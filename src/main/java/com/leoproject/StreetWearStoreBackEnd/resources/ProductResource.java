@@ -13,7 +13,7 @@ public class ProductResource {
 	
 	@GetMapping
 	public ResponseEntity<Product> findAll(){
-		Product p = new Product(1,"t", 10.0, "t", "t", "t", "t", "t", "t", 10);
+		Product p = new Product(null,"t", 10.0, "t", "t", "t", "t", "t", "t", 10);
 		return ResponseEntity.ok().body(p);
 	}
 }
