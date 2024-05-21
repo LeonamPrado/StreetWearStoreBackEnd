@@ -3,6 +3,8 @@ package com.leoproject.StreetWearStoreBackEnd.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.leoproject.StreetWearStoreBackEnd.entities.enums.Type;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,7 +24,7 @@ public class Product implements Serializable {
 	private String urlDetail;
 	private String urlDetail1;
 	private String brand;
-	private String type;
+	private Integer type;
 	private String size;
 	private Integer qtd;
 	
@@ -31,7 +33,7 @@ public class Product implements Serializable {
 	}
 
 	public Product(Integer id, String name, Double price, String urlCover, String urlDetail, String urlDetail1,
-			String brand, String type, String size, Integer qtd) {
+			String brand, Type type, String size, Integer qtd) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
@@ -39,7 +41,7 @@ public class Product implements Serializable {
 		this.urlDetail = urlDetail;
 		this.urlDetail1 = urlDetail1;
 		this.brand = brand;
-		this.type = type;
+		setType(type);
 		this.size = size;
 		this.qtd = qtd;
 	}
@@ -100,12 +102,14 @@ public class Product implements Serializable {
 		this.brand = brand;
 	}
 
-	public String getType() {
-		return type;
+	public Type getType() {
+		return Type.valueOf(type);
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setType(Type type) {
+		if(type != null) {
+			this.type = type.getCode();
+		}
 	}
 
 	public String getSize() {
