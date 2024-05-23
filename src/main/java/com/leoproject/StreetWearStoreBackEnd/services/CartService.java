@@ -13,14 +13,16 @@ import com.leoproject.StreetWearStoreBackEnd.repositories.CartRepository;
 public class CartService {
 	
 	@Autowired
-	private CartRepository productRepository;
+	private CartRepository cartRepository;
 	
 	public List<Cart> findAll(){
-		return productRepository.findAll();
+		return cartRepository.findAll();
 	}
 	
 	public Cart findById(Integer id) {
-		Optional<Cart> obj = productRepository.findById(id);
+		Optional<Cart> obj = cartRepository.findById(id);
 		return obj.get();
 	}
+	
+	
 }
