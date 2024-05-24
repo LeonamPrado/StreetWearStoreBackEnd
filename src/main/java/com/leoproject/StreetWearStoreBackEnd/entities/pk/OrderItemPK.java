@@ -3,7 +3,7 @@ package com.leoproject.StreetWearStoreBackEnd.entities.pk;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.leoproject.StreetWearStoreBackEnd.entities.Cart;
+import com.leoproject.StreetWearStoreBackEnd.entities.Order;
 import com.leoproject.StreetWearStoreBackEnd.entities.Product;
 
 import jakarta.persistence.Embeddable;
@@ -11,25 +11,25 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Embeddable
-public class ProductItemPK implements Serializable {
+public class OrderItemPK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne
 	@JoinColumn(name = "cart_id")
-	private Cart cart;
+	private Order cart;
 	
 	@ManyToOne
 	@JoinColumn(name = "product_id")
 	private Product product;
 	
 
-	public Cart getCart() {
+	public Order getCart() {
 		return cart;
 	}
 
 
-	public void setCart(Cart cart) {
+	public void setCart(Order cart) {
 		this.cart = cart;
 	}
 
@@ -56,7 +56,7 @@ public class ProductItemPK implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ProductItemPK other = (ProductItemPK) obj;
+		OrderItemPK other = (OrderItemPK) obj;
 		return Objects.equals(cart, other.cart) && Objects.equals(product, other.product);
 	}
 	

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.leoproject.StreetWearStoreBackEnd.entities.pk.ProductItemPK;
+import com.leoproject.StreetWearStoreBackEnd.entities.pk.OrderItemPK;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -12,26 +12,26 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_product_item")
-public class ProductItem implements Serializable {
+public class OrderItem implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private ProductItemPK id = new ProductItemPK();
+	private OrderItemPK id = new OrderItemPK();
 	
 	private Integer qtd;
 	private String size;
 	private Double subTotal;
 	
 	
-	public ProductItem() {
+	public OrderItem() {
 		
 	}
 
 
-	public ProductItem(Product product, Cart cart ,Integer qtd, String size, Double subTotal) {
+	public OrderItem(Product product, Order order ,Integer qtd, String size, Double subTotal) {
 		id.setProduct(product);
-		id.setCart(cart);
+		id.setCart(order);
 		this.qtd = qtd;
 		this.size = size;
 		this.subTotal = subTotal;
@@ -46,11 +46,11 @@ public class ProductItem implements Serializable {
 	}
 	
 	@JsonIgnore
-	public Cart getCart() {
+	public Order getOrder() {
 		return id.getCart();
 	}
 	
-	public void setCart(Cart cart) {
+	public void setOrder(Order cart) {
 		id.setCart(cart);
 	}
 
@@ -98,7 +98,7 @@ public class ProductItem implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ProductItem other = (ProductItem) obj;
+		OrderItem other = (OrderItem) obj;
 		return Objects.equals(id, other.id);
 	}
 	

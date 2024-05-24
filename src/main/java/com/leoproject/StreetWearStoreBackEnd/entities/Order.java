@@ -5,43 +5,49 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import jakarta.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
-public class Cart implements Serializable {
+@Table(name = "tb_order")
+public class Order implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "user_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private Double totalPrice;
 	
 	@OneToMany(mappedBy = "id.cart")
-	private Set<ProductItem> items = new HashSet<>();
+	private Set<OrderItem> items = new HashSet<>();
 	
-	@OneToOne
-	@MapsId
+	
+	@ManyToOne
 	@JoinColumn(name = "user_id")
-	private User user = new User();
+	@JsonIgnore
+	private User user;
 	
 	
-	public Cart () {
+	public Order () {
 		
 	}
 
-	public Cart( Double totalPrice, User user) {
-		this.totalPrice = totalPrice;
-		setUser(user);
+	public Order(  User user) {
+		this.totalPrice = 0.0;
+		this.user = user;
 	}
 
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -61,7 +67,7 @@ public class Cart implements Serializable {
 		this.totalPrice = totalPrice;
 	}
 
-	public Set<ProductItem> getItems(){
+	public Set<OrderItem> getItems(){
 		return items;
 	}
 	
@@ -89,7 +95,7 @@ public class Cart implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cart other = (Cart) obj;
+		Order other = (Order) obj;
 		return Objects.equals(id, other.id);
 	}
 	

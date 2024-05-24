@@ -1,0 +1,10 @@
+- Fazer as do cart
+- Fazer o tratamento das Imagens
+
+Rotas do cart:
+- Rota 1 : adicionar produtos do carrinho
+- Rota 2 : remover produtos do carrinho
+- Rota 3 : adicionar mais um item no carrinho
+
+Rota 1 : É uma rota que cria um ProductItem (cart, product, qtd, subtotal), deve receber o Id do cart, Id do product, qtd e size.
+Rota 2 : Recebe o Id do product e o Id do Cart e remove o ProductItem correspondente.

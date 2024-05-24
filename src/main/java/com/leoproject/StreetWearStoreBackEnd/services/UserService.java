@@ -1,5 +1,6 @@
 package com.leoproject.StreetWearStoreBackEnd.services;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,4 +24,9 @@ public class UserService {
 		Optional<User> obj = userRepository.findById(id);
 		return obj.get();
 	}
+	
+	public void addUser(User user) {
+		userRepository.saveAll(Arrays.asList(user));
+	}
 }
+

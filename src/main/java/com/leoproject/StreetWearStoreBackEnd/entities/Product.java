@@ -25,15 +25,13 @@ public class Product implements Serializable {
 	private String urlDetail1;
 	private String brand;
 	private Integer type;
-	private String size;
-	private Integer qtd;
 	
 	public Product() {
 		
 	}
 
 	public Product(Integer id, String name, Double price, String urlCover, String urlDetail, String urlDetail1,
-			String brand, Type type, String size, Integer qtd) {
+			String brand, Type type) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
@@ -42,8 +40,7 @@ public class Product implements Serializable {
 		this.urlDetail1 = urlDetail1;
 		this.brand = brand;
 		setType(type);
-		this.size = size;
-		this.qtd = qtd;
+
 	}
 
 	public Integer getId() {
@@ -112,21 +109,7 @@ public class Product implements Serializable {
 		}
 	}
 
-	public String getSize() {
-		return size;
-	}
 
-	public void setSize(String size) {
-		this.size = size;
-	}
-
-	public Integer getQtd() {
-		return qtd;
-	}
-
-	public void setQtd(Integer qtd) {
-		this.qtd = qtd;
-	}
 
 	@Override
 	public int hashCode() {

@@ -1,7 +1,11 @@
 package com.leoproject.StreetWearStoreBackEnd.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
+
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -9,8 +13,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,20 +26,22 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	private String name;
+	private String email;
+	private String password;
+
 	
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	private Cart cart;
+	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private Set<Order> orders = new HashSet<>();
 	
 	public User () {
 		
 	}
 
-	public User(Integer id,String name) {
-		this.name = name;
+	public User(Integer id,String email, String password) {
 		this.id = id;
-
+		this.email = email;
+		this.password = password;
 	}
 
 	public Integer getId() {
@@ -48,19 +53,23 @@ public class User implements Serializable {
 	}
 
 	public String getName() {
-		return name;
+		return email;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String email) {
+		this.email = email;
 	}
 
-	public Cart getCart() {
-		return cart;
+	public Set<Order> getOrder() {
+		return orders;
 	}
 
-	public void setCart(Cart cart) {
-		this.cart = cart;
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
