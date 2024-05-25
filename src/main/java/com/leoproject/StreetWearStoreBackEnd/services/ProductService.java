@@ -23,4 +23,9 @@ public class ProductService {
 		Optional<Product> obj = productRepository.findById(id);
 		return obj.get();
 	}
+	
+	public List<Product> findByBrand(String brand){
+		List<Product> products = productRepository.findByBrand(brand);
+		return products;
+	}
 }

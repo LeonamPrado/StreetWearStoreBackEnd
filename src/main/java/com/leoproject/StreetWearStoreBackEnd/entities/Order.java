@@ -26,7 +26,7 @@ public class Order implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	private Double totalPrice;
+	private Double Price;
 	
 	@OneToMany(mappedBy = "id.cart")
 	private Set<OrderItem> items = new HashSet<>();
@@ -43,7 +43,7 @@ public class Order implements Serializable {
 	}
 
 	public Order(  User user) {
-		this.totalPrice = 0.0;
+		this.Price = 0.0;
 		this.user = user;
 	}
 
@@ -58,13 +58,13 @@ public class Order implements Serializable {
 	}
 
 
-	public Double getTotalPrice() {
-		return totalPrice;
+	public Double getPrice() {
+		return Price;
 	}
 
 
-	public void setTotalPrice(Double totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setPrice(Double totalPrice) {
+		this.Price = totalPrice;
 	}
 
 	public Set<OrderItem> getItems(){
@@ -79,6 +79,11 @@ public class Order implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	
+	public void totalPrice(OrderItem orderItem) {
+		setPrice(Price + orderItem.getSubTotal());	
 	}
 
 	@Override

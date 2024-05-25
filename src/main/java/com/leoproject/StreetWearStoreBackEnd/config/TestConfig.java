@@ -38,11 +38,13 @@ public class TestConfig implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Product t = new Product(null,"t", 10.0, "t", "t", "t", "t", Type.SNEAKERS);
-		Product p = new Product(null,"p", 100.0, "p", "p", "p", "p", Type.TSHIRT);
+		Product t = new Product(null,"t", 59.0, "t", "t", "t", "nike", Type.SNEAKERS);
+		Product a = new Product(null,"t", 590.0, "t", "t", "t", "nike", Type.SNEAKERS);
+		Product b = new Product(null,"t", 99.0, "t", "t", "t", "nike", Type.SNEAKERS);
+		Product p = new Product(null,"p", 33.0, "p", "p", "p", "p", Type.TSHIRT);
 		Product g = new Product(null,"p", 100.0, "p", "p", "p", "p", Type.TSHIRT);
 		
-		productRepository.saveAll(Arrays.asList(t,p,g));
+		productRepository.saveAll(Arrays.asList(t,p,g,a,b));
 		
 		User u1 = new User(null,"Leonam@mail","123");
 		User u2 = new User(null,"NotLeonam@mail","123");
@@ -54,15 +56,8 @@ public class TestConfig implements CommandLineRunner{
 		userRepository.saveAll(Arrays.asList(u1,u2));
 		orderRepository.saveAll(Arrays.asList(c,c1));
 		
-	
-	
-		
-	
-		
-		
-		
-		OrderItem pi = new OrderItem(t,c,100,"M",100.0);
-		OrderItem pi1 = new OrderItem(p,c,100,"P",50.0);
+		OrderItem pi = new OrderItem(t,c,10,"M");
+		OrderItem pi1 = new OrderItem(p,c,10,"P");
 		
 		productItemRepository.saveAll(Arrays.asList(pi,pi1));
 		

@@ -29,12 +29,12 @@ public class OrderItem implements Serializable {
 	}
 
 
-	public OrderItem(Product product, Order order ,Integer qtd, String size, Double subTotal) {
+	public OrderItem(Product product, Order order ,Integer qtd, String size) {
 		id.setProduct(product);
 		id.setCart(order);
 		this.qtd = qtd;
 		this.size = size;
-		this.subTotal = subTotal;
+		this.subTotal = subTotalCalc();
 	}
 	
 	public Product getProduct() {
@@ -82,6 +82,12 @@ public class OrderItem implements Serializable {
 	public void setSubTotal(Double subTotal) {
 		this.subTotal = subTotal;
 	}
+	
+	public Double subTotalCalc() {
+		Double unitPrice = getProduct().getPrice();
+		return unitPrice * this.qtd;
+	}
+	
 
 
 	@Override

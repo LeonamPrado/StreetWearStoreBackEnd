@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leoproject.StreetWearStoreBackEnd.entities.Order;
-import com.leoproject.StreetWearStoreBackEnd.entities.OrderItem;
-import com.leoproject.StreetWearStoreBackEnd.entities.User;
 import com.leoproject.StreetWearStoreBackEnd.entities.models.OrderItemModel;
 import com.leoproject.StreetWearStoreBackEnd.services.OrderService;
-import com.leoproject.StreetWearStoreBackEnd.services.UserService;
 
 @RestController
 @RequestMapping(value = "/order")
@@ -26,10 +23,6 @@ public class OrderResource {
 	@Autowired
 	private OrderService orderService;
 	
-	@Autowired
-	private UserService userService;
-	
-
 	@GetMapping
 	public ResponseEntity<List<Order>> findAll(){
 		List <Order> list = orderService.findAll();
@@ -44,13 +37,8 @@ public class OrderResource {
 	
 	@PostMapping
 	public ResponseEntity<String> createOrdemItem(@RequestBody OrderItemModel requestBody){
-		User user = userService.findById(requestBody.getUserId());
-		Order order = new Order(user);
-		orderService.saveOrder(order);
-		OrderItem requestItem = requestBody.getOrderItem();
-		OrderItem orderItem = new OrderItem(requestItem.getProduct(),order,requestItem.getQtd(),requestItem.getSize(),requestItem.getSubTotal());
-		orderService.saveOrderItem(orderItem);
-		
+
+		orderService.handlePost(requestBody);
 		return new ResponseEntity<>("Requisição POST recebida com sucesso", HttpStatus.OK);
 	}
 }
