@@ -52,11 +52,11 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
+	public String getEmail() {
 		return email;
 	}
 
-	public void setName(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 

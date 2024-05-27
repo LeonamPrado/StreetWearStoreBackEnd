@@ -22,6 +22,8 @@ public class UserResource {
 	@Autowired
 	private UserService service;
 	
+
+	
 	@GetMapping
 	public ResponseEntity<List<User>> findAll(){
 		List <User> list = service.findAll();
@@ -36,8 +38,14 @@ public class UserResource {
 	
 	@PostMapping
 	public ResponseEntity<String> createUser(@RequestBody User user){
-		service.addUser(user);
-		return new ResponseEntity<>("Requisição POST recebida com sucesso", HttpStatus.OK);
+		String createdUser = service.registerUser(user);
+		return new ResponseEntity<>(createdUser, HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/login")
+	public ResponseEntity<Boolean> loginUser(@RequestBody User user){
+		Boolean login = service.loginUser(user);
+		return new ResponseEntity<>(login, HttpStatus.OK);
 	}
 	
 }
