@@ -46,7 +46,7 @@ public class OrderService {
 	public void handlePost(OrderItemModel requestBody) {
 		User user = userService.findById(requestBody.getUserId());
 		Order order = new Order(user);
-		List<OrderItem> requestItemArray = requestBody.getOrderItem();
+		List<OrderItem> requestItemArray = requestBody.getOrderItems();
 		for (OrderItem requestItem : requestItemArray) {
 			OrderItem orderItem = new OrderItem(requestItem.getProduct(), order, requestItem.getQtd(),requestItem.getSize());
 			order.totalPrice(orderItem);

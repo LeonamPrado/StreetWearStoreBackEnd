@@ -10,12 +10,12 @@ public class OrderItemModel  implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private List<OrderItem> orderItem;
+	private List<OrderItem> orderItems;
 	private Integer userId;
 	
 	
-	public List<OrderItem> getOrderItem() {
-		return orderItem;
+	public List<OrderItem> getOrderItems() {
+		return orderItems;
 	}
 	
 	
