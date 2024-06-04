@@ -1,6 +1,8 @@
 package com.leoproject.StreetWearStoreBackEnd.resources;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,9 +38,10 @@ public class OrderResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<String> createOrdemItem(@RequestBody OrderItemModel requestBody){
-
+	public ResponseEntity<Map<String,String>> createOrdemItem(@RequestBody OrderItemModel requestBody){
+		Map<String, String> response = new HashMap<>();
+		response.put("status","sucess");
 		orderService.handlePost(requestBody);
-		return new ResponseEntity<>("Requisição POST recebida com sucesso", HttpStatus.OK);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 }

@@ -28,7 +28,7 @@ public class Order implements Serializable {
 	
 	private Double Price;
 	
-	@OneToMany(mappedBy = "id.cart")
+	@OneToMany(mappedBy = "id.order")
 	private Set<OrderItem> items = new HashSet<>();
 	
 	
@@ -42,7 +42,7 @@ public class Order implements Serializable {
 		
 	}
 
-	public Order(  User user) {
+	public Order(User user) {
 		this.Price = 0.0;
 		this.user = user;
 	}
@@ -83,7 +83,7 @@ public class Order implements Serializable {
 	
 	
 	public void totalPrice(OrderItem orderItem) {
-		setPrice(Price + orderItem.getSubTotal());	
+		setPrice(Price + orderItem.getSubTotal());
 	}
 
 	@Override

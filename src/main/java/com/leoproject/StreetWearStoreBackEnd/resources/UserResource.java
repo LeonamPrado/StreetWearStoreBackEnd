@@ -37,8 +37,8 @@ public class UserResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<String> createUser(@RequestBody User user){
-		String createdUser = service.registerUser(user);
+	public ResponseEntity<Boolean> createUser(@RequestBody User user){
+		Boolean createdUser = service.registerUser(user);
 		return new ResponseEntity<>(createdUser, HttpStatus.OK);
 	}
 	

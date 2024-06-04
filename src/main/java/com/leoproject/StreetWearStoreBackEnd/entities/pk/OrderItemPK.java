@@ -16,8 +16,8 @@ public class OrderItemPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne
-	@JoinColumn(name = "cart_id")
-	private Order cart;
+	@JoinColumn(name = "order_id")
+	private Order order;
 	
 	@ManyToOne
 	@JoinColumn(name = "product_id")
@@ -25,12 +25,12 @@ public class OrderItemPK implements Serializable {
 	
 
 	public Order getCart() {
-		return cart;
+		return order;
 	}
 
 
-	public void setCart(Order cart) {
-		this.cart = cart;
+	public void setCart(Order order) {
+		this.order = order;
 	}
 
 
@@ -45,7 +45,7 @@ public class OrderItemPK implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cart, product);
+		return Objects.hash(order, product);
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class OrderItemPK implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		OrderItemPK other = (OrderItemPK) obj;
-		return Objects.equals(cart, other.cart) && Objects.equals(product, other.product);
+		return Objects.equals(order, other.order) && Objects.equals(product, other.product);
 	}
 	
 	

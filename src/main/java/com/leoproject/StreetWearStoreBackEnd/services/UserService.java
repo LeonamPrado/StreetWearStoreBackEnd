@@ -25,12 +25,12 @@ public class UserService {
 		return obj.get();
 	}
 	
-	public String registerUser(User user) {
+	public Boolean registerUser(User user) {
 		if(userRepository.findByEmail(user.getEmail()) == null) {
 			userRepository.saveAll(Arrays.asList(user));
-			return "User Created" ;
+			return true ;
 		}else {
-			return "Email already in use";
+			return false;
 		}
 	}
 	
