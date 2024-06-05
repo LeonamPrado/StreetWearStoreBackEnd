@@ -43,8 +43,8 @@ public class UserResource {
 	}
 	
 	@PostMapping(value = "/login")
-	public ResponseEntity<Boolean> loginUser(@RequestBody User user){
-		Boolean login = service.loginUser(user);
+	public ResponseEntity<User> loginUser(@RequestBody User user){
+		User login = service.loginUser(user);
 		return new ResponseEntity<>(login, HttpStatus.OK);
 	}
 	

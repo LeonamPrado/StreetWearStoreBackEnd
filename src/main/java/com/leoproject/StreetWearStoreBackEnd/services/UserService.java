@@ -34,12 +34,8 @@ public class UserService {
 		}
 	}
 	
-	public Boolean loginUser(User user) {
-		if(userRepository.findByPasswordAndEmail(user.getPassword(), user.getEmail()) == null) {
-			return false;
-		}else {
-			return true;
-		}
+	public User loginUser(User user) {
+		return userRepository.findByPasswordAndEmail(user.getPassword(), user.getEmail()); 
 	}
 }
 
