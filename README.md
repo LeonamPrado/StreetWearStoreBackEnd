@@ -30,44 +30,91 @@
 O projeto consiste no back-end de uma loja de roupas que possui a finalidade de armazenar todas as informações sobre o site e transações realizadas em um banco de dados
 <!--Principais pontos do projeto-->
 Principais Pontos:
-* Site 100% responsivo podendo ser útilizado em todas as telas modernas.
-* Carrinho de compras com diversas funcionalidades
+
+* Gera os pedidos e mantem registro dos mesmo
+* Armazena todos os produtos da loja
+* Armazenamento de imagens no banco de dados por meio das URLs
+* Disponibiliza diversas rotas para requisições HTTPs
 * Sistema simples de registro e login de usuário
 
+O projeto seguiu o modelo de Logical Layers e possui o seguinte Modelo de Domínio:
+
+<img src="/images/ReadME/StreetWearStore UML.png">
 
 <!-- GETTING STARTED TUTORIAL -->
 ## Getting Started
 
 <!--Falar do backend-->
 > [!IMPORTANT]  
-> O projeto precisa do back-end para funcionar, back-end: https://github.com/LeonamPrado/StreetWearStoreBackEnd
+> O projeto funciona juntamente com o front-end, front-end: https://github.com/LeonamPrado/StreetWearStoreFrontEnd
 
-Entre na pasta do projeto e siga os seguintes passos:
+### Pré-requisitos
 
-* Baixe as dependências
-  
-  ```sh
-  npm install
-  ```
-* Inicie o projeto
-  
-  ```sh
-  ng serve
-  ```
+Certifique-se de ter os seguintes softwares instalados em seu sistema:
 
-## Features
-<!--Features e gifs de exemplo-->
-* <h3>Responsividade:<h3/>
-<img src="/src/assets/readME/responsiveGif.gif"> 
+- **Java Development Kit (JDK)** (versão 8 ou superior): [Download JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+- **Maven** (para gerenciamento de dependências e construção do projeto): [Download Maven](https://maven.apache.org/download.cgi)
+- **Git** (para clonar o repositório): [Download Git](https://git-scm.com/downloads)
 
+### Instalação
 
-* <h3>Carrinho totalmente funcional:<h3/>
-<img src="/src/assets/readME/cartGif.gif">
+Siga estas etapas para configurar o ambiente de desenvolvimento local:
 
+1. **Clone o repositório:**
 
-* <h3>Sistema simples de login e registro:<h3/>
-<img src="/src/assets/readME/loginGif.gif">
-  
+    ```sh
+    git clone https://github.com/LeonamPrado/StreetWearStoreBackEnd.git
+    cd StreetWearStoreBackEnd
+    ```
+
+2. **Construa o projeto com Maven:**
+
+    Navegue até o diretório do projeto e execute o comando Maven para construir o projeto e baixar as dependências:
+
+    ```sh
+    mvn clean install
+    ```
+
+3. **Executar a Aplicação:**
+
+    #### Usando o Maven:
+
+    ```sh
+    mvn spring-boot:run
+    ```
+
+    Alternativamente, você pode executar o arquivo `jar` gerado dentro do diretório `target`:
+
+    ```sh
+    java -jar target/nome-do-seu-projeto-0.0.1-SNAPSHOT.jar
+    ```
+
+    #### Usando o Spring Tool Suite (STS):
+
+    Para executar a aplicação usando o Spring Tool Suite (STS), siga estas etapas:
+
+    1. **Importe o Projeto para o STS:**
+
+        - Abra o Spring Tool Suite.
+        - Vá até `File` > `Import`.
+        - Selecione `Maven` > `Existing Maven Projects` e clique em `Next`.
+        - Navegue até o diretório onde você clonou o repositório e clique em `Finish`.
+
+    2. **Construa o Projeto:**
+
+        - Clique com o botão direito no projeto importado na aba `Project Explorer`.
+        - Selecione `Run As` > `Maven install` para construir o projeto e baixar todas as dependências.
+
+    3. **Execute a Aplicação:**
+
+        - Clique com o botão direito no projeto na aba `Project Explorer`.
+        - Selecione `Run As` > `Spring Boot App`.
+
+    4. **Verifique a Execução:**
+
+        - A aplicação será iniciada e você verá as mensagens de log no console indicando que a aplicação Spring Boot está sendo executada.
+        - A aplicação estará disponível em `http://localhost:8080`.
+
 
 
 
