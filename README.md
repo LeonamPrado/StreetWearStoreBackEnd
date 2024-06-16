@@ -41,6 +41,14 @@ O projeto seguiu o modelo de Logical Layers e possui o seguinte Modelo de Domín
 
 <img src="/images/ReadME/StreetWearStore UML.png">
 
+
+
+## Geração de pedidos
+* Para se gerar os pedidos foi estabelicada uma relação de muitos para muitos entre Product e Order, intermediada pela classe OrderItem.
+* A classe OrderItem por sua vez recebe um Product, adiciona informações(vindas do front-end) a ele e o atribui a uma Order, para fazer essa ligação a classe OrderItem faz uso de uma PK composta.
+
+<img src="/images/ReadME/ordersGif.gif">
+
 <!-- GETTING STARTED TUTORIAL -->
 ## Getting Started
 
@@ -114,13 +122,6 @@ Siga estas etapas para configurar o ambiente de desenvolvimento local:
 
         - A aplicação será iniciada e você verá as mensagens de log no console indicando que a aplicação Spring Boot está sendo executada.
         - A aplicação estará disponível em `http://localhost:8080`.
-
-## Geração de pedidos
-* Para se gerar os pedidos foi estabelicada uma relação de muitos para muitos entre Product e Order, intermediada pela classe OrderItem.
-* A classe OrderItem por sua vez recebe um Product, adiciona informações(vindas do front-end) a ele e o atribui a uma Order, para fazer essa ligação a classe OrderItem faz uso de uma PK composta.
-
-<img src="/images/ReadME/ordersGif.gif">
-
 
 
 
